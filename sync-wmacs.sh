@@ -29,11 +29,10 @@ for project in "${PROJECTS[@]}"; do
         # Create wmacs directory if it doesn't exist
         mkdir -p "$project/wmacs"
         
-        # Sync core files
-        echo "   Copying core WMACS files..."
-        cp "$MASTER_DIR/wmacs-guardian.js" "$project/wmacs/"
-        cp "$MASTER_DIR/wmacs-research-advisor.js" "$project/wmacs/"
-        cp "$MASTER_DIR/wmacs-auto-advisor.js" "$project/wmacs/"
+        # Sync all WMACS files
+        echo "   Copying all WMACS files..."
+        find "$MASTER_DIR" -name "wmacs-*.js" -exec cp {} "$project/wmacs/" \;
+        find "$MASTER_DIR" -name "wmacs-*.sh" -exec cp {} "$project/wmacs/" \;
         
         # Copy documentation
         echo "   Copying documentation..."
