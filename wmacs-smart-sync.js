@@ -28,6 +28,13 @@ class WMACSSmartSync {
       'cascade-rules.json',
       'health-check.sh'
     ];
+
+    // MCP server components that are synced
+    this.mcpSyncableComponents = [
+      'mcp-server-core/base-server.js',
+      'mcp-server-core/common-tools.js',
+      'mcp-server-core/security-guardrails.js'
+    ];
     
     // Files that are NEVER overwritten (protected)
     this.protectedFiles = [
@@ -35,9 +42,12 @@ class WMACSSmartSync {
       'config/environments.json',
       'config/ssh-config.json',
       'config/overrides.json',
+      'config/mcp-config.json',
       'local/custom-rules.js',
       'local/local-procedures.md',
-      'local/integrations/*'
+      'local/integrations/*',
+      '../mcp-server-ops-*/src/index.js',
+      '../mcp-server-ops-*/package.json'
     ];
     
     // Files that require intelligent merging
@@ -62,7 +72,10 @@ class WMACSSmartSync {
       // 4. Sync shared components
       await this.syncSharedComponents();
       
-      // 5. Handle hybrid files
+      // 5. Sync MCP server components
+      await this.syncMCPComponents();
+      
+      // 6. Handle hybrid files
       await this.handleHybridFiles();
       
       // 6. Restore protected files
@@ -141,6 +154,26 @@ class WMACSSmartSync {
         
         fs.copyFileSync(sourcePath, targetPath);
         console.log(`   Synced: ${file}`);
+      }
+    }
+  }
+
+  async syncMCPComponents() {
+    console.log('🔄 Syncing MCP server components...');
+    
+    for (const component of this.mcpSyncableComponents) {
+      const sourcePath = path.join(this.sharedSystemPath, component);
+      const targetPath = path.join(this.localWmacsPath, 'core', component);
+      
+      if (fs.existsSync(sourcePath)) {
+        // Ensure target directory exists
+        const targetDir = path.dirname(targetPath);
+        if (!fs.existsSync(targetDir)) {
+          fs.mkdirSync(targetDir, { recursive: true });
+        }
+        
+        fs.copyFileSync(sourcePath, targetPath);
+        console.log(`   Synced MCP: ${component}`);
       }
     }
   }
