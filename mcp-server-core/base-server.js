@@ -20,10 +20,10 @@ const execAsync = promisify(exec);
 class WMACSBaseMCPServer {
   constructor(config) {
     this.config = {
-      name: config.name || 'wmacs-mcp-server',
+      name: config.name || 'apex-mcp-server',
       version: config.version || '1.0.0',
       maxOperationsPerHour: config.maxOperationsPerHour || 10,
-      operationLog: config.operationLog || '/var/log/wmacs-mcp-ops.log',
+      operationLog: config.operationLog || '/var/log/apex-mcp-ops.log',
       allowedHosts: config.allowedHosts || [],
       allowedPaths: config.allowedPaths || [],
       containers: config.containers || {},
@@ -51,7 +51,7 @@ class WMACSBaseMCPServer {
 
   addCommonTools() {
     // Health check tool (available to all WMACS MCP servers)
-    this.addTool('wmacs_health_check', {
+    this.addTool('apex_health_check', {
       description: 'Check WMACS system health across environments',
       inputSchema: {
         type: 'object',
@@ -69,7 +69,7 @@ class WMACSBaseMCPServer {
     });
 
     // System status tool
-    this.addTool('wmacs_system_status', {
+    this.addTool('apex_system_status', {
       description: 'Get comprehensive WMACS system status',
       inputSchema: {
         type: 'object',

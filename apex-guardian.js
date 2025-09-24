@@ -28,7 +28,7 @@ class WMACSGuardian {
 
   initializeResearchAdvisor() {
     try {
-      const WMACSResearchAdvisor = require('./wmacs-research-advisor.js');
+      const WMACSResearchAdvisor = require('./apex-research-advisor.js');
       const advisor = new WMACSResearchAdvisor();
       advisor.loadKnowledgeBase();
       return advisor;
@@ -338,6 +338,6 @@ if (require.main === module) {
       break;
       
     default:
-      console.log('Usage: node wmacs-guardian.js [start|test] [container]');
+      console.log('Usage: node apex-guardian.js [start|test] [container]');
   }
 }

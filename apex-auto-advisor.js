@@ -5,7 +5,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const WMACSResearchAdvisor = require('./wmacs-research-advisor.js');
+const WMACSResearchAdvisor = require('./apex-research-advisor.js');
 
 class WMACSAutoAdvisor {
   constructor() {
@@ -164,7 +164,7 @@ class WMACSAutoAdvisor {
    */
   saveAnalysisResults(result) {
     const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
-    const filename = `.wmacs/auto-analysis-${timestamp}.json`;
+    const filename = `.apex/auto-analysis-${timestamp}.json`;
     
     try {
       fs.writeFileSync(filename, JSON.stringify(result, null, 2));
@@ -218,7 +218,7 @@ if (require.main === module) {
       break;
       
     default:
-      console.log('Usage: node wmacs-auto-advisor.js [monitor|test] [text...]');
+      console.log('Usage: node apex-auto-advisor.js [monitor|test] [text...]');
       console.log('  monitor "user input text" - Monitor text for suggestions');
       console.log('  test - Run tests with sample suggestions');
   }

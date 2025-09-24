@@ -1,5 +1,5 @@
 {
-  "wmacs": {
+  "apex": {
     "enabled": true,
     "strictMode": true,
     "rules": {
@@ -59,7 +59,7 @@
           "action": "approve"
         },
         {
-          "pattern": "wmacs.*sync",
+          "pattern": "apex.*sync",
           "message": "✅ APPROVED: WMACS synchronization",
           "action": "approve"
         },

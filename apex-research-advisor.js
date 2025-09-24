@@ -382,7 +382,7 @@ class WMACSResearchAdvisor {
    */
   saveKnowledgeBase() {
     const fs = require('fs');
-    const path = '.wmacs/knowledge-base.json';
+    const path = '.apex/knowledge-base.json';
     
     try {
       fs.writeFileSync(path, JSON.stringify(this.knowledgeBase, null, 2));
@@ -396,7 +396,7 @@ class WMACSResearchAdvisor {
    */
   loadKnowledgeBase() {
     const fs = require('fs');
-    const path = '.wmacs/knowledge-base.json';
+    const path = '.apex/knowledge-base.json';
     
     try {
       if (fs.existsSync(path)) {
@@ -449,7 +449,7 @@ if (require.main === module) {
       break;
       
     default:
-      console.log('Usage: node wmacs-research-advisor.js [analyze|mistake] [args...]');
+      console.log('Usage: node apex-research-advisor.js [analyze|mistake] [args...]');
       console.log('  analyze "suggestion text" - Analyze suggestion with research');
       console.log('  mistake "mistake" "impact" "lesson" - Record mistake for learning');
   }

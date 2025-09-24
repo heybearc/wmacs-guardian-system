@@ -40,9 +40,9 @@ class WMACsCICDIntegrationTest {
     
     // Test that required config files exist
     const requiredFiles = [
-      'wmacs/config/project.json',
-      'wmacs/config/environments.json',
-      'wmacs/wmacs-guardian.js'
+      'apex/config/project.json',
+      'apex/config/environments.json',
+      'apex/apex-guardian.js'
     ];
     
     for (const file of requiredFiles) {
@@ -52,8 +52,8 @@ class WMACsCICDIntegrationTest {
     }
     
     // Test that config is valid JSON
-    const projectConfig = JSON.parse(fs.readFileSync('wmacs/config/project.json', 'utf8'));
-    const envConfig = JSON.parse(fs.readFileSync('wmacs/config/environments.json', 'utf8'));
+    const projectConfig = JSON.parse(fs.readFileSync('apex/config/project.json', 'utf8'));
+    const envConfig = JSON.parse(fs.readFileSync('apex/config/environments.json', 'utf8'));
     
     // Validate project config structure
     if (!projectConfig.projectName || !projectConfig.authentication) {
@@ -71,7 +71,7 @@ class WMACsCICDIntegrationTest {
   async testEnvironmentSpecificSettings() {
     console.log('🧪 Testing Environment-Specific Settings...');
     
-    const envConfig = JSON.parse(fs.readFileSync('wmacs/config/environments.json', 'utf8'));
+    const envConfig = JSON.parse(fs.readFileSync('apex/config/environments.json', 'utf8'));
     
     // Test staging environment
     const staging = envConfig.staging;
@@ -92,7 +92,7 @@ class WMACsCICDIntegrationTest {
     console.log('🧪 Testing CI/CD Pipeline Compatibility...');
     
     // Test that WMACS Guardian can identify environments by container
-    const WMACSGuardian = require('../wmacs/wmacs-guardian.js');
+    const WMACSGuardian = require('../apex/apex-guardian.js');
     const guardian = new WMACSGuardian();
     
     // Test staging environment lookup
@@ -113,7 +113,7 @@ class WMACsCICDIntegrationTest {
   async testAuthenticationPreservation() {
     console.log('🧪 Testing Authentication Preservation...');
     
-    const projectConfig = JSON.parse(fs.readFileSync('wmacs/config/project.json', 'utf8'));
+    const projectConfig = JSON.parse(fs.readFileSync('apex/config/project.json', 'utf8'));
     
     // Test that LDC-specific authentication is preserved
     const auth = projectConfig.authentication;
@@ -133,9 +133,9 @@ class WMACsCICDIntegrationTest {
     
     // Test that core components exist
     const coreFiles = [
-      'wmacs/core/WINDSURF_OPERATIONAL_GUIDELINES.md',
-      'wmacs/core/ENFORCEMENT_MECHANISMS.md',
-      'wmacs/core/wmacs-research-advisor.js'
+      'apex/core/WINDSURF_OPERATIONAL_GUIDELINES.md',
+      'apex/core/ENFORCEMENT_MECHANISMS.md',
+      'apex/core/apex-research-advisor.js'
     ];
     
     for (const file of coreFiles) {
@@ -145,7 +145,7 @@ class WMACsCICDIntegrationTest {
     }
     
     // Test that smart sync script exists and is executable
-    if (!fs.existsSync('wmacs/wmacs-smart-sync.js')) {
+    if (!fs.existsSync('apex/apex-smart-sync.js')) {
       throw new Error('Smart sync script missing');
     }
     

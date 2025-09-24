@@ -1,6 +1,6 @@
-# WMACS Guardian Usage Guide
+# APEX Guardian Usage Guide
 
-**Complete workflow for updating and synchronizing WMACS Guardian across all repositories**
+**Complete workflow for updating and synchronizing APEX Guardian across all repositories**
 
 ## 🚀 **Quick Start Commands**
 
@@ -27,13 +27,13 @@ cd ~/Documents/Cloudy-Work/shared/wmacs-guardian-system
 
 ## 📋 **Complete Workflow Steps**
 
-### **Step 1: Develop New WMACS Components**
-Create your new WMACS files in any location:
+### **Step 1: Develop New APEX Components**
+Create your new APEX files in any location:
 - `/Users/cory/Documents/Cloudy-Work/scripts/` (recommended for new tools)
 - Individual project directories (for project-specific updates)
 - Master repository (for direct updates)
 
-**Naming Convention**: All WMACS files should start with `wmacs-`
+**Naming Convention**: All APEX files should start with `wmacs-`
 - `wmacs-port-guardian.js`
 - `wmacs-architectural-guardian.js`
 - `wmacs-admin-tester.js`
@@ -67,7 +67,7 @@ cd ~/Documents/Cloudy-Work/shared/wmacs-guardian-system
 ./update-wmacs.sh health-check
 ```
 
-## 🔄 **Available WMACS Components**
+## 🔄 **Available APEX Components**
 
 After synchronization, each project will have access to:
 
@@ -87,7 +87,7 @@ After synchronization, each project will have access to:
 - `wmacs-guardian-isolated.js` - Isolated environment guardian
 
 ### **Initialization Scripts**
-- `wmacs-universal-init.sh` - Universal WMACS setup
+- `wmacs-universal-init.sh` - Universal APEX setup
 - `wmacs-repo-isolated-init.sh` - Repository isolation setup
 
 ## 💻 **Usage in Projects**

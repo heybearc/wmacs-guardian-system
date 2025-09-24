@@ -20,17 +20,17 @@ class WMACScascadeValidator {
       return JSON.parse(rulesContent);
     } catch (error) {
       console.error('❌ Failed to load WMACS cascade rules:', error.message);
-      return { wmacs: { enabled: false, rules: {} } };
+      return { apex: { enabled: false, rules: {} } };
     }
   }
 
   validateCommand(command) {
-    if (!this.rules.wmacs.enabled) {
+    if (!this.rules.apex.enabled) {
       return { allowed: true, message: 'WMACS validation disabled' };
     }
 
     // Check hard stops (blocking)
-    for (const rule of this.rules.wmacs.rules.hardStops || []) {
+    for (const rule of this.rules.apex.rules.hardStops || []) {
       if (new RegExp(rule.pattern, 'i').test(command)) {
         return {
           allowed: false,
@@ -42,7 +42,7 @@ class WMACScascadeValidator {
     }
 
     // Check soft stops (warnings)
-    for (const rule of this.rules.wmacs.rules.softStops || []) {
+    for (const rule of this.rules.apex.rules.softStops || []) {
       if (new RegExp(rule.pattern, 'i').test(command)) {
         return {
           allowed: true,
@@ -54,7 +54,7 @@ class WMACScascadeValidator {
     }
 
     // Check approved patterns
-    for (const rule of this.rules.wmacs.rules.approvedPatterns || []) {
+    for (const rule of this.rules.apex.rules.approvedPatterns || []) {
       if (new RegExp(rule.pattern, 'i').test(command)) {
         return {
           allowed: true,
@@ -69,7 +69,7 @@ class WMACScascadeValidator {
   }
 
   validateEnvironmentAccess(container, operation) {
-    const environments = this.rules.wmacs.environments || {};
+    const environments = this.rules.apex.environments || {};
     
     for (const [envName, config] of Object.entries(environments)) {
       if (config.container === container) {
@@ -98,14 +98,14 @@ class WMACScascadeValidator {
   generateReport() {
     const report = {
       timestamp: new Date().toISOString(),
-      wmacs_enabled: this.rules.wmacs.enabled,
-      strict_mode: this.rules.wmacs.strictMode,
+      apex_enabled: this.rules.apex.enabled,
+      strict_mode: this.rules.apex.strictMode,
       rules_count: {
-        hard_stops: (this.rules.wmacs.rules.hardStops || []).length,
-        soft_stops: (this.rules.wmacs.rules.softStops || []).length,
-        approved_patterns: (this.rules.wmacs.rules.approvedPatterns || []).length
+        hard_stops: (this.rules.apex.rules.hardStops || []).length,
+        soft_stops: (this.rules.apex.rules.softStops || []).length,
+        approved_patterns: (this.rules.apex.rules.approvedPatterns || []).length
       },
-      environments: Object.keys(this.rules.wmacs.environments || {})
+      environments: Object.keys(this.rules.apex.environments || {})
     };
 
     return report;
@@ -140,9 +140,9 @@ if (require.main === module) {
 
     default:
       console.log('Usage:');
-      console.log('  node wmacs-validator.js validate "command string"');
-      console.log('  node wmacs-validator.js check-env <container> <operation>');
-      console.log('  node wmacs-validator.js report');
+      console.log('  node apex-validator.js validate "command string"');
+      console.log('  node apex-validator.js check-env <container> <operation>');
+      console.log('  node apex-validator.js report');
   }
 }
 

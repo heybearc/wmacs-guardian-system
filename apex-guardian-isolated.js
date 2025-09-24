@@ -15,7 +15,7 @@ const execAsync = promisify(exec);
 class WMACSGuardianIsolated {
   constructor() {
     this.projectRoot = process.cwd();
-    this.configPath = path.join(this.projectRoot, '.wmacs/config/wmacs-config.json');
+    this.configPath = path.join(this.projectRoot, '.apex/config/apex-config.json');
     this.config = null;
   }
 
@@ -34,7 +34,7 @@ class WMACSGuardianIsolated {
     console.log(`[${timestamp}] ${level.toUpperCase()}: ${message}`);
     
     // Log to repository-local file
-    const logFile = path.join(this.projectRoot, '.wmacs/logs', `wmacs-${new Date().toISOString().split('T')[0]}.log`);
+    const logFile = path.join(this.projectRoot, '.apex/logs', `apex-${new Date().toISOString().split('T')[0]}.log`);
     await fs.mkdir(path.dirname(logFile), { recursive: true }).catch(() => {});
     await fs.appendFile(logFile, `${timestamp} ${level}: ${message}\n`).catch(() => {});
   }
@@ -129,7 +129,7 @@ if (require.main === module) {
       guardian.status().catch(console.error);
       break;
     default:
-      console.log('Usage: node wmacs-guardian-isolated.js [deploy-staging|health-check|status]');
+      console.log('Usage: node apex-guardian-isolated.js [deploy-staging|health-check|status]');
   }
 }
 

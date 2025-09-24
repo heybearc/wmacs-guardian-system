@@ -1,5 +1,5 @@
 // WMACS Guardian Configuration Template
-// Copy this file to your project root as 'wmacs-config.js' and customize
+// Copy this file to your project root as 'apex-config.js' and customize
 
 module.exports = {
   // Project identification
@@ -68,7 +68,7 @@ module.exports = {
   
   // Research Advisor configuration
   researchAdvisor: {
-    knowledgeBasePath: '.wmacs/knowledge-base.json',
+    knowledgeBasePath: '.apex/knowledge-base.json',
     autoAnalysis: true,
     pushbackThreshold: 'medium', // low|medium|high
     
