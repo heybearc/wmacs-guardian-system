@@ -81,7 +81,7 @@ class WMACsCICDIntegrationTest {
     
     // Test production environment  
     const production = envConfig.production;
-    if (production.container !== '134' || production.ip !== '10.92.3.24') {
+    if (production.container !== '133' || production.ip !== '10.92.3.22') {
       throw new Error('Production environment configuration incorrect');
     }
     
@@ -102,8 +102,8 @@ class WMACsCICDIntegrationTest {
     }
     
     // Test production environment lookup
-    const productionEnv = guardian.getEnvironmentByContainer('134');
-    if (!productionEnv || productionEnv.ip !== '10.92.3.24') {
+    const productionEnv = guardian.getEnvironmentByContainer('133');
+    if (!productionEnv || productionEnv.ip !== '10.92.3.22') {
       throw new Error('Cannot resolve production environment by container ID');
     }
     
