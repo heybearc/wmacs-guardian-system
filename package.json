@@ -1,0 +1,24 @@
+{
+  "name": "apex-guardian-system",
+  "version": "1.0.0",
+  "description": "**Windsurf MCP Artifact CI/CD System (APEX) Guardian**   Universal deadlock detection and recovery system for AI-driven development environments.",
+  "main": "apex-admin-comprehensive-tester.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/heybearc/wmacs-guardian-system.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/heybearc/wmacs-guardian-system/issues"
+  },
+  "homepage": "https://github.com/heybearc/wmacs-guardian-system#readme",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.18.2"
+  }
+}

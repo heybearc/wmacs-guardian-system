@@ -1,0 +1,62 @@
+{
+  "federation": {
+    "name": "APEX Guardian MCP Federation",
+    "version": "1.0.0",
+    "coordinator": {
+      "name": "apex-guardian-coordinator",
+      "port": 3100,
+      "host": "localhost"
+    },
+    "projects": {
+      "ldc-construction-tools": {
+        "root": "/Users/cory/Documents/Cloudy-Work/applications/ldc-construction-tools",
+        "database": {
+          "url": "postgresql://postgres:Cl0udy!!(@)@10.92.3.21:5432/ldc_construction_tools",
+          "schema": "ldc_schema"
+        },
+        "infrastructure": {
+          "staging": { "container": "135", "ip": "10.92.3.25" },
+          "production": { "container": "133", "ip": "10.92.3.23" }
+        },
+        "mcp_servers": ["database", "proxmox", "github"]
+      },
+      "jw-attendant-scheduler": {
+        "root": "/Users/cory/Documents/Cloudy-Work/applications/jw-attendant-scheduler",
+        "database": {
+          "url": "postgresql://postgres:Cl0udy!!(@)@10.92.3.21:5432/jw_attendant_scheduler",
+          "schema": "jw_schema"
+        },
+        "infrastructure": {
+          "staging": { "container": "134", "ip": "10.92.3.24" },
+          "production": { "container": "132", "ip": "10.92.3.22" }
+        },
+        "mcp_servers": ["database", "proxmox", "github"]
+      }
+    },
+    "shared_resources": {
+      "postgresql": {
+        "host": "10.92.3.21",
+        "port": 5432,
+        "container": "131",
+        "connection_pool": {
+          "max_connections": 20,
+          "per_project_limit": 5
+        }
+      },
+      "proxmox": {
+        "host": "10.92.0.5",
+        "port": 8006,
+        "rate_limit": {
+          "operations_per_minute": 10,
+          "per_project_limit": 3
+        }
+      }
+    },
+    "guardrails": {
+      "operation_logging": true,
+      "resource_isolation": true,
+      "conflict_detection": true,
+      "audit_trail": "/var/log/apex-mcp-federation.log"
+    }
+  }
+}

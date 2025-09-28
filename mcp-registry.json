@@ -1,0 +1,79 @@
+{
+  "apexGuardianSystem": {
+    "version": "2.0.0",
+    "description": "APEX Guardian System with Enhanced CI/CD MCP Servers",
+    "lastUpdated": "2025-09-28T12:23:00Z",
+    "registeredServers": {
+      "enhanced-jw-mcp-cicd": {
+        "path": "/Users/cory/Documents/Cloudy-Work/applications/jw-attendant-scheduler/mcp-server-ops/enhanced-jw-mcp-cicd.js",
+        "project": "jw-attendant-scheduler",
+        "capabilities": [
+          "real_ssh_deployment",
+          "container_separation",
+          "github_runner_management", 
+          "resource_optimization",
+          "event_centric_validation"
+        ],
+        "infrastructure": {
+          "staging": "10.92.3.24:3001",
+          "production": "10.92.3.22:3001",
+          "database": "jw_attendant_scheduler"
+        },
+        "status": "active"
+      },
+      "enhanced-ldc-mcp-cicd": {
+        "path": "/Users/cory/Documents/Cloudy-Work/applications/jw-attendant-scheduler/mcp-server-ops/enhanced-ldc-mcp-cicd.js",
+        "project": "ldc-construction-tools",
+        "capabilities": [
+          "phase_based_deployment",
+          "module_validation",
+          "postgresql_migration",
+          "compliance_testing",
+          "automated_rollback"
+        ],
+        "infrastructure": {
+          "staging": "10.92.3.25:3001",
+          "production": "10.92.3.23:3001",
+          "database": "ldc_construction_tools"
+        },
+        "status": "active"
+      },
+      "federation-coordinator-cicd": {
+        "path": "/Users/cory/Documents/Cloudy-Work/applications/jw-attendant-scheduler/mcp-server-ops/federation-coordinator-cicd.js",
+        "project": "multi-project-coordinator",
+        "capabilities": [
+          "intelligent_project_routing",
+          "natural_language_deployment",
+          "multi_project_coordination",
+          "deployment_status_federation",
+          "credit_optimization"
+        ],
+        "infrastructure": {
+          "scope": "all_projects",
+          "routing": "automatic"
+        },
+        "status": "active"
+      }
+    },
+    "creditOptimization": {
+      "currentSavings": "60-80%",
+      "techniques": [
+        "operation_batching",
+        "ssh_connection_pooling",
+        "response_caching",
+        "intelligent_routing",
+        "container_separation",
+        "automated_recovery"
+      ]
+    },
+    "deploymentCommands": {
+      "examples": [
+        "Deploy JW to staging",
+        "Deploy LDC Phase 2 to production", 
+        "Manage JW containers",
+        "Optimize staging resources",
+        "Deploy with rollback enabled"
+      ]
+    }
+  }
+}
