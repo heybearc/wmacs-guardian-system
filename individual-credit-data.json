@@ -1,0 +1,22 @@
+{
+  "sessions": [
+    {
+      "timestamp": "2025-09-29T10:57:00.390Z",
+      "credits": 8,
+      "type": "manual_log",
+      "date": "2025-09-29"
+    }
+  ],
+  "dailyTotals": {
+    "2025-09-29": 8
+  },
+  "monthlyTotals": {
+    "2025-09": 8
+  },
+  "savingsMetrics": {
+    "totalSaved": 0,
+    "optimizationsApplied": [],
+    "efficiency": 0
+  },
+  "lastUpdated": "2025-09-29T10:57:00.391Z"
+}
